@@ -20,7 +20,9 @@ def shacheck(teststr):
     ha = hashlib.sha1()
     ha.update(teststr.encode())
 
-    return ha.digest()[-1] == 0 and ha.digest()[-2] == 0  # and ha.digest()[-3] == 0 and ha.digest()[-4] == 0
+    digest = ha.digest()
+
+    return digest[-1] == 0 and digest[-2] == 0  # and ha.digest()[-3] == 0 and ha.digest()[-4] == 0
 
 
 def solve():
@@ -50,6 +52,8 @@ def solve_first(s):
     logging.info(head)
     logging.info(len(head))
 
+    logging.info(len(letters))
+
     # head + 5 characters
     ans = head + 'xxxxx'
     l = list(letters)
@@ -70,6 +74,7 @@ def solve_first(s):
     #         break
 
     four_chars = cartesian((l, l, l, l))
+    found = False
     for v in four_chars:
         for x in list(l):
             suffix = ''.join(v) + x
@@ -77,7 +82,11 @@ def solve_first(s):
 
             ans = head + suffix
             if shacheck(ans):
+                found = True
                 break
+
+        if found:
+            break
 
     logging.debug('found !: ' + ans)
     logging.info(len(ans))
