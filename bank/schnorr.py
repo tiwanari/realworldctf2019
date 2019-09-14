@@ -2,7 +2,8 @@ import hashlib
 import binascii
 import unittest
 
-from Crypto.Random import random
+import random
+# from Crypto.Random import random
 
 p = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F
 n = 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141
@@ -11,7 +12,7 @@ G = (0x79BE667EF9DCBBAC55A06295CE870B07029BFCDB2DCE28D959F2815B16F81798, 0x483AD
 # back-ports for python2 from https://stackoverflow.com/questions/16022556/has-python-3-to-bytes-been-back-ported-to-python-2-7
 def to_bytes(n, length, byteorder='big'):
     h = hex(n)[2:].rstrip('L')
-    print 'h', h
+    # print('h', h)
     s = ('0'*(len(h) % 2) + h).zfill(length*2).decode('hex')
     return s if byteorder == 'big' else s[::-1]
 

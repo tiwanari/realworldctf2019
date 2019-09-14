@@ -10,6 +10,8 @@ import calendar
 
 from schnorr import *
 
+from bank.schnorr import generate_keys
+
 MSGLENGTH = 40000
 HASHLENGTH = 16
 FLAG = open("flag","r").read()
