@@ -73,13 +73,13 @@ def solve_first(s):
     for v in four_chars:
         for x in list(l):
             suffix = ''.join(v) + x
-            logging.debug(suffix)
+            # logging.debug(suffix)
 
             ans = head + suffix
             if shacheck(ans):
                 break
 
-    logging.debug('found !' + ans)
+    logging.debug('found !: ' + ans)
     logging.info(len(ans))
 
     return ans.encode()
