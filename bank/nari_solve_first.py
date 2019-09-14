@@ -22,7 +22,7 @@ def shacheck(teststr):
 
     digest = ha.digest()
 
-    return digest[-1] == 0 and digest[-2] == 0  # and ha.digest()[-3] == 0 and ha.digest()[-4] == 0
+    return ord(digest[-1]) == 0 and ord(digest[-2]) == 0  # and ha.digest()[-3] == 0 and ha.digest()[-4] == 0
 
 
 def solve():
@@ -88,7 +88,12 @@ def solve_first(s):
         if found:
             break
 
-    logging.debug('found !: ' + ans)
+    logging.info(found)
+    logging.info(ans)
+
+    if found:
+        logging.debug('found !: ' + ans)
+
     logging.info(len(ans))
 
     return ans.encode()
